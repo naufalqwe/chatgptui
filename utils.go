@@ -1,36 +1,19 @@
-package main
+package util
 
 import (
-	"fmt"
-	"os"
+	"log"
 
-	"github.com/dwisiswant0/chatgptui/common"
+	"github.com/charmbracelet/bubbletea"
+	"github.com/charmbracelet/lipgloss"
 )
 
-func showBanner() {
-	fmt.Fprintf(os.Stderr, header, common.Version)
-}
-
-func showUsage() {
-	main := os.Args[0]
-	fmt.Fprintf(os.Stderr, "Usage: %s [options]\n", main)
-	fmt.Fprint(os.Stderr, options)
-	fmt.Fprintf(os.Stderr, examples, main, main)
-}
-
-func showVersion() {
-	fmt.Fprintf(os.Stderr, "ChatGPTUI %s\n", common.Version)
-	os.Exit(2)
-}
-
-func listAllModels() {
-	for _, model := range common.OpenaiModels {
-		fmt.Println(model)
+func RunProgram(model tea.Model) {
+	p := tea.NewProgram(model)
+	if _, err := p.Run(); err != nil {
+		log.Fatal(err)
 	}
-	os.Exit(0)
 }
 
-func removeConfig() {
-	_ = os.Remove(common.GetConfigPath())
-	os.Exit(0)
+func SetTermColor(s string) lipgloss.Style {
+	return lipgloss.NewStyle().Foreground(lipgloss.Color(s))
 }
