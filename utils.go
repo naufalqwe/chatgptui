@@ -1,19 +1,19 @@
-package util
+package chat
 
 import (
-	"log"
-
-	"github.com/charmbracelet/bubbletea"
-	"github.com/charmbracelet/lipgloss"
+	"context"
+	"strings"
 )
 
-func RunProgram(model tea.Model) {
-	p := tea.NewProgram(model)
-	if _, err := p.Run(); err != nil {
-		log.Fatal(err)
-	}
-}
+func (m model) sendChat(prompt string) (string, error) {
+	ctx := context.Background()
 
-func SetTermColor(s string) lipgloss.Style {
-	return lipgloss.NewStyle().Foreground(lipgloss.Color(s))
+	m.openaiRequest.Prompt = prompt
+
+	resp, err := m.openaiClient.CreateCompletion(ctx, m.openaiRequest)
+	if err != nil {
+		return "", err
+	}
+
+	return strings.TrimSpace(resp.Choices[0].Text), nil
 }
