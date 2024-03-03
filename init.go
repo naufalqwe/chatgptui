@@ -1,10 +1,10 @@
-package chat
+package config
 
 import (
-	"github.com/charmbracelet/bubbles/textarea"
+	"github.com/charmbracelet/bubbles/textinput"
 	"github.com/charmbracelet/bubbletea"
 )
 
 func (m model) Init() tea.Cmd {
-	return tea.Batch(textarea.Blink, tea.ClearScreen)
+	return textinput.Blink
 }
