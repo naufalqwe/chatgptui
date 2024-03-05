@@ -1,28 +1,8 @@
-package style
+package common
 
-import (
-	"fmt"
-
-	"github.com/charmbracelet/lipgloss"
-	"github.com/dwisiswant0/chatgptui/util"
-)
-
-var (
-	Focused = util.SetTermColor("205")
-
-	Cursor      = Focused.Copy()
-	Error       = util.SetTermColor("11")
-	Help        = util.SetTermColor("240")
-	Clear       = lipgloss.NewStyle()
-	Placeholder = util.SetTermColor("60")
-	Response    = util.SetTermColor("#b13434")
-	Sender      = util.SetTermColor("#1c74d4")
-	Spinner     = Focused.Copy()
-	Viewport    = lipgloss.NewStyle().
-			BorderStyle(lipgloss.RoundedBorder()).
-			BorderForeground(lipgloss.Color("62")).
-			PaddingRight(2)
-
-	FocusedBtn = Focused.Copy().Render("[ Save ]")
-	BlurredBtn = fmt.Sprintf("[ %s ]", Help.Render("Save"))
-)
+var OpenaiModels = []string{
+	"gpt-4-32k-0314", "gpt-4-32k", "gpt-4-0314", "gpt-4", "gpt-3.5-turbo-0301", "gpt-3.5-turbo",
+	"text-davinci-003", "text-davinci-002", "text-curie-001", "text-babbage-001", "text-ada-001",
+	"text-davinci-001", "davinci-instruct-beta", "davinci", "curie-instruct-beta", "curie", "ada",
+	"babbage", "code-davinci-002", "code-cushman-001", "code-davinci-001",
+}
