@@ -1,17 +1,16 @@
-package main
+package common
+
+const Version = "v1.0.0"
 
 const (
-	header = "\n  ChatGPTUI 🤖 %s\n" +
-		"  --\n" + "  ChatGPT with Textual User Interface\n" +
-		"  made with 💖 by dw1\n\n"
+	HelpText       = "↑/↓: Navigate • esc: Quit"
+	HelpTextProTip = "💡 ProTip: Type '/c' to clear chat history."
+	HelpTextReset  = "ctrl+r: Reset all"
+	HelpTextTab    = "tab: Fill to default"
+)
 
-	options = "\nOptions:\n" +
-		"  -e, --edit         Edit configuration\n" +
-		"  -l, --list         List all supported OpenAI model\n" +
-		"      --rm           Remove configuration\n" +
-		"  -V, --version      Show current version\n"
-
-	examples = "\nExamples:\n" +
-		"  %s\n" +
-		"  %s --edit\n"
+const (
+	ChatPlaceholder    = "Send your prompt..."
+	ChatWelcomeMessage = `Welcome to the ChatGPTUI! 🤖
+Type a message and press Enter to send.`
 )
